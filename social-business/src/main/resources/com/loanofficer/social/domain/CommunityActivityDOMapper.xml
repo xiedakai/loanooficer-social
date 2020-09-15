@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loanofficer.social.domain.CommunityActivityDOMapper">
+  <resultMap id="BaseResultMap" type="com.loanofficer.social.domain.CommunityActivityDO">
+    <!--@mbg.generated-->
+    <!--@Table community_activity-->
+    <id column="id" property="id" />
+    <result column="topic_id" property="topicId" />
+    <result column="topic_name" property="topicName" />
+    <result column="user_id" property="userId" />
+    <result column="user_name" property="userName" />
+    <result column="avatar" property="avatar" />
+    <result column="city" property="city" />
+    <result column="credit_rating_name" property="creditRatingName" />
+    <result column="thumbup_count" property="thumbupCount" />
+    <result column="comment_count" property="commentCount" />
+    <result column="is_accusation" property="isAccusation" />
+    <result column="is_deleted" property="isDeleted" />
+    <result column="create_time" property="createTime" />
+    <result column="creator" property="creator" />
+    <result column="update_time" property="updateTime" />
+    <result column="updater" property="updater" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, topic_id, topic_name, user_id, user_name, avatar, city, credit_rating_name, thumbup_count, 
+    comment_count, is_accusation, is_deleted, create_time, creator, update_time, updater
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update community_activity
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="topic_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.topicId}
+        </foreach>
+      </trim>
+      <trim prefix="topic_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.topicName}
+        </foreach>
+      </trim>
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="user_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.userName}
+        </foreach>
+      </trim>
+      <trim prefix="avatar = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.avatar}
+        </foreach>
+      </trim>
+      <trim prefix="city = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.city}
+        </foreach>
+      </trim>
+      <trim prefix="credit_rating_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.creditRatingName}
+        </foreach>
+      </trim>
+      <trim prefix="thumbup_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.thumbupCount}
+        </foreach>
+      </trim>
+      <trim prefix="comment_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.commentCount}
+        </foreach>
+      </trim>
+      <trim prefix="is_accusation = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.isAccusation}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.isDeleted}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createTime}
+        </foreach>
+      </trim>
+      <trim prefix="creator = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.creator}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updateTime}
+        </foreach>
+      </trim>
+      <trim prefix="updater = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updater}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update community_activity
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="topic_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.topicId != null">
+            when id = #{item.id} then #{item.topicId}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="topic_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.topicName != null">
+            when id = #{item.id} then #{item.topicName}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id} then #{item.userId}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userName != null">
+            when id = #{item.id} then #{item.userName}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="avatar = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.avatar != null">
+            when id = #{item.id} then #{item.avatar}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="city = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.city != null">
+            when id = #{item.id} then #{item.city}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="credit_rating_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.creditRatingName != null">
+            when id = #{item.id} then #{item.creditRatingName}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="thumbup_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.thumbupCount != null">
+            when id = #{item.id} then #{item.thumbupCount}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="comment_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.commentCount != null">
+            when id = #{item.id} then #{item.commentCount}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_accusation = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isAccusation != null">
+            when id = #{item.id} then #{item.isAccusation}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isDeleted != null">
+            when id = #{item.id} then #{item.isDeleted}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id} then #{item.createTime}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="creator = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.creator != null">
+            when id = #{item.id} then #{item.creator}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when id = #{item.id} then #{item.updateTime}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updater = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updater != null">
+            when id = #{item.id} then #{item.updater}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into community_activity
+    (topic_id, topic_name, user_id, user_name, avatar, city, credit_rating_name, thumbup_count, 
+      comment_count, is_accusation, is_deleted, create_time, creator, update_time, updater
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.topicId}, #{item.topicName}, #{item.userId}, #{item.userName}, #{item.avatar}, 
+        #{item.city}, #{item.creditRatingName}, #{item.thumbupCount}, #{item.commentCount}, 
+        #{item.isAccusation}, #{item.isDeleted}, #{item.createTime}, #{item.creator}, #{item.updateTime}, 
+        #{item.updater})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.loanofficer.social.domain.CommunityActivityDO" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into community_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      topic_id,
+      topic_name,
+      user_id,
+      user_name,
+      avatar,
+      city,
+      credit_rating_name,
+      thumbup_count,
+      comment_count,
+      is_accusation,
+      is_deleted,
+      create_time,
+      creator,
+      update_time,
+      updater,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      #{topicId},
+      #{topicName},
+      #{userId},
+      #{userName},
+      #{avatar},
+      #{city},
+      #{creditRatingName},
+      #{thumbupCount},
+      #{commentCount},
+      #{isAccusation},
+      #{isDeleted},
+      #{createTime},
+      #{creator},
+      #{updateTime},
+      #{updater},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      topic_id = #{topicId},
+      topic_name = #{topicName},
+      user_id = #{userId},
+      user_name = #{userName},
+      avatar = #{avatar},
+      city = #{city},
+      credit_rating_name = #{creditRatingName},
+      thumbup_count = #{thumbupCount},
+      comment_count = #{commentCount},
+      is_accusation = #{isAccusation},
+      is_deleted = #{isDeleted},
+      create_time = #{createTime},
+      creator = #{creator},
+      update_time = #{updateTime},
+      updater = #{updater},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.loanofficer.social.domain.CommunityActivityDO" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into community_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="topicId != null">
+        topic_id,
+      </if>
+      <if test="topicName != null">
+        topic_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="creditRatingName != null">
+        credit_rating_name,
+      </if>
+      <if test="thumbupCount != null">
+        thumbup_count,
+      </if>
+      <if test="commentCount != null">
+        comment_count,
+      </if>
+      <if test="isAccusation != null">
+        is_accusation,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="topicId != null">
+        #{topicId},
+      </if>
+      <if test="topicName != null">
+        #{topicName},
+      </if>
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="userName != null">
+        #{userName},
+      </if>
+      <if test="avatar != null">
+        #{avatar},
+      </if>
+      <if test="city != null">
+        #{city},
+      </if>
+      <if test="creditRatingName != null">
+        #{creditRatingName},
+      </if>
+      <if test="thumbupCount != null">
+        #{thumbupCount},
+      </if>
+      <if test="commentCount != null">
+        #{commentCount},
+      </if>
+      <if test="isAccusation != null">
+        #{isAccusation},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="creator != null">
+        #{creator},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+      <if test="updater != null">
+        #{updater},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="topicId != null">
+        topic_id = #{topicId},
+      </if>
+      <if test="topicName != null">
+        topic_name = #{topicName},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar},
+      </if>
+      <if test="city != null">
+        city = #{city},
+      </if>
+      <if test="creditRatingName != null">
+        credit_rating_name = #{creditRatingName},
+      </if>
+      <if test="thumbupCount != null">
+        thumbup_count = #{thumbupCount},
+      </if>
+      <if test="commentCount != null">
+        comment_count = #{commentCount},
+      </if>
+      <if test="isAccusation != null">
+        is_accusation = #{isAccusation},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="creator != null">
+        creator = #{creator},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="updater != null">
+        updater = #{updater},
+      </if>
+    </trim>
+  </insert>
+</mapper>

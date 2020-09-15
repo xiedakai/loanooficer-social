@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loanofficer.social.domain.CommunityActivityImgMapper">
+  <resultMap id="BaseResultMap" type="com.loanofficer.social.domain.CommunityActivityImg">
+    <!--@mbg.generated-->
+    <!--@Table community_activity_img-->
+    <id column="id" property="id" />
+    <result column="activity_id" property="activityId" />
+    <result column="user_id" property="userId" />
+    <result column="img_url" property="imgUrl" />
+    <result column="img_type" property="imgType" />
+    <result column="pos" property="pos" />
+    <result column="is_deleted" property="isDeleted" />
+    <result column="create_time" property="createTime" />
+    <result column="creator" property="creator" />
+    <result column="update_time" property="updateTime" />
+    <result column="updater" property="updater" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, activity_id, user_id, img_url, img_type, pos, is_deleted, create_time, creator, 
+    update_time, updater
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update community_activity_img
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="activity_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.activityId}
+        </foreach>
+      </trim>
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="img_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.imgUrl}
+        </foreach>
+      </trim>
+      <trim prefix="img_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.imgType}
+        </foreach>
+      </trim>
+      <trim prefix="pos = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.pos}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.isDeleted}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createTime}
+        </foreach>
+      </trim>
+      <trim prefix="creator = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.creator}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updateTime}
+        </foreach>
+      </trim>
+      <trim prefix="updater = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updater}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update community_activity_img
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="activity_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.activityId != null">
+            when id = #{item.id} then #{item.activityId}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id} then #{item.userId}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="img_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.imgUrl != null">
+            when id = #{item.id} then #{item.imgUrl}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="img_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.imgType != null">
+            when id = #{item.id} then #{item.imgType}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="pos = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.pos != null">
+            when id = #{item.id} then #{item.pos}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isDeleted != null">
+            when id = #{item.id} then #{item.isDeleted}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id} then #{item.createTime}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="creator = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.creator != null">
+            when id = #{item.id} then #{item.creator}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when id = #{item.id} then #{item.updateTime}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updater = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updater != null">
+            when id = #{item.id} then #{item.updater}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into community_activity_img
+    (activity_id, user_id, img_url, img_type, pos, is_deleted, create_time, creator, 
+      update_time, updater)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.activityId}, #{item.userId}, #{item.imgUrl}, #{item.imgType}, #{item.pos}, 
+        #{item.isDeleted}, #{item.createTime}, #{item.creator}, #{item.updateTime}, #{item.updater}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.loanofficer.social.domain.CommunityActivityImg" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into community_activity_img
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      activity_id,
+      user_id,
+      img_url,
+      img_type,
+      pos,
+      is_deleted,
+      create_time,
+      creator,
+      update_time,
+      updater,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      #{activityId},
+      #{userId},
+      #{imgUrl},
+      #{imgType},
+      #{pos},
+      #{isDeleted},
+      #{createTime},
+      #{creator},
+      #{updateTime},
+      #{updater},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      activity_id = #{activityId},
+      user_id = #{userId},
+      img_url = #{imgUrl},
+      img_type = #{imgType},
+      pos = #{pos},
+      is_deleted = #{isDeleted},
+      create_time = #{createTime},
+      creator = #{creator},
+      update_time = #{updateTime},
+      updater = #{updater},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.loanofficer.social.domain.CommunityActivityImg" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into community_activity_img
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="imgType != null">
+        img_type,
+      </if>
+      <if test="pos != null">
+        pos,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="activityId != null">
+        #{activityId},
+      </if>
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl},
+      </if>
+      <if test="imgType != null">
+        #{imgType},
+      </if>
+      <if test="pos != null">
+        #{pos},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="creator != null">
+        #{creator},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+      <if test="updater != null">
+        #{updater},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl},
+      </if>
+      <if test="imgType != null">
+        img_type = #{imgType},
+      </if>
+      <if test="pos != null">
+        pos = #{pos},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="creator != null">
+        creator = #{creator},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="updater != null">
+        updater = #{updater},
+      </if>
+    </trim>
+  </insert>
+</mapper>

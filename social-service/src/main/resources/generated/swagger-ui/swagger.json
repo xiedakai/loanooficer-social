@@ -1,0 +1,108 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "文档搜索器-API",
+    "version" : "v1",
+    "title" : "文档搜索器"
+  },
+  "host" : "localhost:9025",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "动态模块"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/activity/latest" : {
+      "get" : {
+        "tags" : [ "动态模块" ],
+        "summary" : "最新的动态",
+        "description" : "",
+        "operationId" : "latest",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "userId",
+          "description" : "userId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ActivityController"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PageResult动态列表"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ActivityController" : {
+      "type" : "object"
+    },
+    "PageResult" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "data" : {
+          "type" : "object"
+        },
+        "msg" : {
+          "type" : "string"
+        },
+        "success" : {
+          "type" : "boolean"
+        },
+        "pageNum" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "pageSize" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "total" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      },
+      "description" : "翻页结果集"
+    },
+    "PageResult动态列表" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "data" : {
+          "type" : "object"
+        },
+        "msg" : {
+          "type" : "string"
+        },
+        "success" : {
+          "type" : "boolean"
+        },
+        "pageNum" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "pageSize" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "total" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      },
+      "description" : "翻页结果集"
+    }
+  }
+}
